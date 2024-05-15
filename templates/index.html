@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ChatRoom</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+</head>
+<body>
+  <!-- nav -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">ChatRoom</a>
+      </div>
+    </div>
+  </nav>
+  <!-- ./nav -->
+
+  <!-- main -->
+  <main class="container">
+  <div class="content">  
+      <div class="row">
+        <div class="col-md-6">
+          
+
+          
+          <h1 class="text-center">Welcome to ChatRoom! <br><small>A simple Chating site.</small></h1>
+          
+        </div>
+        <div class="col-md-6">
+          <h4>Login to start texting!</h4>
+
+          {% for message in messages %}
+      <h6 style="color:red;">{{message}}</h3>
+      {% endfor %}
+
+          <!-- login form -->
+          <form method="post" action="login">
+            {% csrf_token %}
+          <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="Username">
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+          </div>
+
+          <div class="form-group" style="width: 75px; float:left; height:100px;">
+            <input class="btn btn-primary" type="submit" name="login" value="Login">
+          </div>
+          <a href="register">
+            <div class="form-group" style="width: 60px; float:left; height:100px;" >
+                <input class="btn btn-success" type="button" name="register" value="Register">
+              </div>
+            </a>
+            </form>
+          <!-- ./loginform -->
+        </div>
+      </div>
+  </div>  
+  </main>
+  <!-- ./main -->
+
+  <!-- footer -->
+  <footer class="container text-center" style="position: fixed; bottom: 0; right: 0;">
+    <ul class="nav nav-pills pull-right">
+      <li>ChatRoom - Made by 2020a1r174_Mayank Chib</li>
+    </ul>
+  </footer>
+  <!-- ./footer -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
